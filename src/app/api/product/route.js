@@ -30,12 +30,34 @@ export async function GET(req, res){
 // } 
 
 //sending Body - if request body is a json
-export async function POST(req, res){
-    const reqBody = await req.json();
-    let name = reqBody['name']
-    let city = reqBody['city']
+// export async function POST(req, res){
+//     const reqBody = await req.json();
+//     let name = reqBody['name']
+//     let city = reqBody['city']
     
-    return NextResponse.json({msg:city})
+//     return NextResponse.json({msg:city})
+// } 
+
+//sending Body - if request body is a form data
+export async function POST(req, res){
+    // catch request
+    const reqBody = await req.formData();
+    let name = reqBody.get('name');
+    let city = reqBody.get('city');
+    let country = reqBody.get('country');
+
+    
+    // Calculation
+    // Business Logic
+    // Model
+    // Database
+    // Heavy Execution
+    // Security
+
+
+
+    // send response
+    return NextResponse.json({name:name,city:city,country:country })
 } 
 
 
