@@ -64,31 +64,57 @@ export async function GET(req, res){
 
 
 //how to work with request header
-export async function POST(req, res){
-    // catch request
-    let headList = headers();
-    let Token = headList.get('Auth-Token')
+// export async function POST(req, res){
+//     // catch request
+//     let headList = headers();
+//     let Token = headList.get('Auth-Token')
     
     
 
 
-    // send response
-    return NextResponse.json({msg:Token})
-} 
+//     // send response
+//     return NextResponse.json({msg:Token})
+// } 
 
 
 //how to work with cookies
+// export async function POST(req, res){
+//     // catch request
+//     let csrf_token = req.cookies.get('csrf_token')
+    
+    
+
+
+//     // send response
+//     return NextResponse.json({msg:csrf_token})
+// } 
+
+
+// response status Code
 export async function POST(req, res){
     // catch request
-    let csrf_token = req.cookies.get('csrf_token')
     
     
-
-
     // send response
-    return NextResponse.json({msg:csrf_token})
-} 
+    return NextResponse.json([
+        {
+            "name": "Alice",
+            "age": 25,
+            "city": "New York"
+          },
+          {
+            "name": "Bob",
+            "age": 30,
+            "city": "Los Angeles"
+          },
+          {
+            "name": "Charlie",
+            "age": 22,
+            "city": "Chicago"
+          }
+    ], {status: 203})
 
+} 
 
 
 
