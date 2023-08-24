@@ -15,8 +15,25 @@ export async function GET(req, res){
 
 //POST
 export async function POST(req, res){
-    return NextResponse.json({msg: 'IM POST'})
+
+    // multiple query string
+    const {searchParams} = new URL(req.url)
+    const id = searchParams.get('id')
+    const name = searchParams.get('name')
+    const city = searchParams.get('city')
+
+    // return NextResponse.json({msg: 'IM POST'})
+    // returning as a json object
+    return NextResponse.json({id:id, name:name, city:city})
+
+
 } 
+
+
+
+
+
+
 
 
 //PUT
