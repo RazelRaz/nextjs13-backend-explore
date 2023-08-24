@@ -1,4 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
+import { headers } from 'next/headers';
+
 
 
 //GET
@@ -39,26 +41,51 @@ export async function GET(req, res){
 // } 
 
 //sending Body - if request body is a form data
+// export async function POST(req, res){
+//     // catch request
+//     const reqBody = await req.formData();
+//     let name = reqBody.get('name');
+//     let city = reqBody.get('city');
+//     let country = reqBody.get('country');
+
+
+//     // Calculation
+//     // Business Logic
+//     // Model
+//     // Database
+//     // Heavy Execution
+//     // Security
+
+
+
+//     // send response
+//     return NextResponse.json({name:name,city:city,country:country })
+// } 
+
+
+//how to work with request header
 export async function POST(req, res){
     // catch request
-    const reqBody = await req.formData();
-    let name = reqBody.get('name');
-    let city = reqBody.get('city');
-    let country = reqBody.get('country');
-
+    let headList = headers();
+    let Token = headList.get('Auth-Token')
     
-    // Calculation
-    // Business Logic
-    // Model
-    // Database
-    // Heavy Execution
-    // Security
-
+    
 
 
     // send response
-    return NextResponse.json({name:name,city:city,country:country })
+    return NextResponse.json({msg:Token})
 } 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
