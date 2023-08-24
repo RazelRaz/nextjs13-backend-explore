@@ -77,6 +77,17 @@ export async function POST(req, res){
 } 
 
 
+//how to work with cookies
+export async function POST(req, res){
+    // catch request
+    let csrf_token = req.cookies.get('csrf_token')
+    
+    
+
+
+    // send response
+    return NextResponse.json({msg:csrf_token})
+} 
 
 
 
