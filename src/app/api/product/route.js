@@ -1,17 +1,39 @@
 import { NextRequest, NextResponse } from "next/server";
 import { headers } from 'next/headers';
+import { redirect } from 'next/navigation'
+
 
 
 
 //GET
-export async function GET(req, res){
-    // single query string
-    const {searchParams} = new URL(req.url)
-    let id = searchParams.get('id')
+// export async function GET(req, res){
+//     // single query string
+//     const {searchParams} = new URL(req.url)
+//     let id = searchParams.get('id')
 
-    // return NextResponse.json({msg: 'IM GET'})
-    return NextResponse.json({msg: id})
+//     // return NextResponse.json({msg: 'IM GET'})
+//     return NextResponse.json({msg: id})
+// }
+
+
+//redirect response
+export async function GET(req, res){
+    
+
+
+    redirect("/")
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
