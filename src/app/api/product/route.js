@@ -91,6 +91,37 @@ export async function GET(req, res){
 
 
 // response status Code
+// export async function POST(req, res){
+//     // catch request
+    
+    
+//     // send response
+//     return NextResponse.json([
+//         {
+//             "name": "Alice",
+//             "age": 25,
+//             "city": "New York"
+//           },
+//           {
+//             "name": "Bob",
+//             "age": 30,
+//             "city": "Los Angeles"
+//           },
+//           {
+//             "name": "Charlie",
+//             "age": 22,
+//             "city": "Chicago"
+//           }
+//     ], {
+//         status: 203,
+//         headers: {'token': 'XTZ-123-ASD'}
+        
+//     })
+
+// } 
+
+
+// response cookie
 export async function POST(req, res){
     // catch request
     
@@ -112,9 +143,14 @@ export async function POST(req, res){
             "age": 22,
             "city": "Chicago"
           }
-    ], {status: 203})
+    ], {
+        status: 201,
+        headers: {'Set-Cookie': 'token=3123;path=/;'}
+        
+    })
 
 } 
+
 
 
 
