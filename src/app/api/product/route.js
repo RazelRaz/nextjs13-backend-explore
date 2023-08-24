@@ -14,19 +14,28 @@ export async function GET(req, res){
 
 
 //POST
+// export async function POST(req, res){
+
+//     // multiple query string
+//     const {searchParams} = new URL(req.url)
+//     const id = searchParams.get('id')
+//     const name = searchParams.get('name')
+//     const city = searchParams.get('city')
+
+//     // return NextResponse.json({msg: 'IM POST'})
+//     // returning as a json object
+//     return NextResponse.json({id:id, name:name, city:city})
+
+
+// } 
+
+//sending Body - if request body is a json
 export async function POST(req, res){
-
-    // multiple query string
-    const {searchParams} = new URL(req.url)
-    const id = searchParams.get('id')
-    const name = searchParams.get('name')
-    const city = searchParams.get('city')
-
-    // return NextResponse.json({msg: 'IM POST'})
-    // returning as a json object
-    return NextResponse.json({id:id, name:name, city:city})
-
-
+    const reqBody = await req.json();
+    let name = reqBody['name']
+    let city = reqBody['city']
+    
+    return NextResponse.json({msg:city})
 } 
 
 
