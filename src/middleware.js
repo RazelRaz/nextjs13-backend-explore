@@ -14,12 +14,37 @@ import { NextRequest, NextResponse } from "next/server";
 
 
 //conditional statement - middleware
+// export function middleware(req,res){
+//     if(req.nextUrl.pathname.startsWith("/api/product")){
+//         console.log("IM API Middleware");
+//     } else if (req.nextUrl.pathname.startsWith("/dashboard")){
+//         console.log("IM dashboard Middleware");
+//     } else if (req.nextUrl.pathname.startsWith("/site")){
+//         console.log("IM SIte Middleware");
+//     }
+// }
+
+
+
+//how to work with response header in middleware
+
+
+//how to work with request header mnipulate in middleware
+//if there is an any token avaialable or not
 export function middleware(req,res){
     if(req.nextUrl.pathname.startsWith("/api/product")){
-        console.log("IM API Middleware");
-    } else if (req.nextUrl.pathname.startsWith("/dashboard")){
-        console.log("IM dashboard Middleware");
-    } else if (req.nextUrl.pathname.startsWith("/site")){
-        console.log("IM SIte Middleware");
+        const reqHeaders = new Headers(req.Headers);
+        const token = reqHeaders.get('token')
+
+        if(token==="123-XYZ"){
+            //set new header property
+            reqHeaders.set('user_id', '1991')
+            reqHeaders.set('user_email', 'mailrazel@mail.com')
+           return NextResponse.next({
+                request:{headers:reqHeaders}
+           });
+        } else {
+           return NextResponse.json({}, {status:401})
+        }
     }
 }
