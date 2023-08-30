@@ -50,11 +50,21 @@ import { headers } from 'next/headers';
 
 
 // working with request header - POST
- export async function POST(req,res){
+//  export async function POST(req,res){
 
-    let headList = headers();
-    let Token = headList.get('Auth-Token');
-    return NextResponse.json({msg:Token});
+//     let headList = headers();
+//     let Token = headList.get('Auth-Token');
+//     return NextResponse.json({msg:Token});
 
- }
+//  }
     
+
+
+
+// Working with request cookies - POST
+export async function POST(req,res){
+    let csrf_token = req.cookies.get('csrf_token');
+
+
+    return NextResponse.json({msg:csrf_token});
+}
