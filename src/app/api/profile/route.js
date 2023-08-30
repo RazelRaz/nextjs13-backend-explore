@@ -26,15 +26,25 @@ import { NextResponse, NextRequest} from "next/server";
 
 
 
-//catch request body with POST
+//catch request body with json - POST
+// export async function POST(req,res){
+//     const reqBody = await req.json()
+
+//     let name = reqBody['name']
+//     let city = reqBody['city']
+
+//     return NextResponse.json({msg: name})
+// }
+
+// catch request body with form - POST
 export async function POST(req,res){
-    const reqBody = await req.json()
 
-    let name = reqBody['name']
-    let city = reqBody['city']
+    const reqBody = await req.fromData()
 
-    return NextResponse.json({msg: name})
+    const name = reqBody.get('name');
+    const city = reqBody.get('city');
+    const country = reqBody.get('country');
+
+    return NextResponse.json({name:name, city:city, country:country})
 }
-
-
 
