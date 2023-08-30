@@ -1,5 +1,5 @@
 import { NextResponse, NextRequest} from "next/server";
-// import { headers } from 'next/headers';
+import { headers } from 'next/headers';
 // import { redirect } from 'next/navigation'
 
 //GET
@@ -37,14 +37,24 @@ import { NextResponse, NextRequest} from "next/server";
 // }
 
 // catch request body with form - POST
-export async function POST(req,res){
+// export async function POST(req,res){
 
-    const reqBody = await req.fromData()
+//     const reqBody = await req.fromData()
 
-    const name = reqBody.get('name');
-    const city = reqBody.get('city');
-    const country = reqBody.get('country');
+//     const name = reqBody.get('name');
+//     const city = reqBody.get('city');
+//     const country = reqBody.get('country');
 
-    return NextResponse.json({name:name, city:city, country:country})
-}
+//     return NextResponse.json({name:name, city:city, country:country})
+// }
 
+
+// working with request header - POST
+ export async function POST(req,res){
+
+    let headList = headers();
+    let Token = headList.get('Auth-Token');
+    return NextResponse.json({msg:Token});
+
+ }
+    
