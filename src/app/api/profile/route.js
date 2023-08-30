@@ -62,9 +62,19 @@ import { headers } from 'next/headers';
 
 
 // Working with request cookies - POST
+// export async function POST(req,res){
+//     let csrf_token = req.cookies.get('csrf_token');
+
+//     return NextResponse.json({msg:csrf_token});
+// }
+
+
+
+// Simple JSON Response and custom status - POST
 export async function POST(req,res){
-    let csrf_token = req.cookies.get('csrf_token');
 
-
-    return NextResponse.json({msg:csrf_token});
+    return NextResponse.json([
+        { name: 'John', age: 23, city: "Luton" },
+        { name: 'Don', age: 34, city: "Castle" }
+    ], {status:203})
 }
